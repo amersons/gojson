@@ -19,6 +19,18 @@ type Js struct {
 }
 
 //Initialize the json configruation
+func JsonByte(data []byte) *Js {
+	j := new(Js)
+	var f interface{}
+	err := json.Unmarshal(data, &f)
+	if err != nil {
+		return j
+	}
+	j.data = f
+	return j
+}
+
+//Initialize the json configruation
 func Json(data string) *Js {
 	j := new(Js)
 	var f interface{}
